@@ -1,0 +1,18 @@
+version: '3'
+services:
+  postgres:
+    image: postgres
+    ports:
+      - '5432:5432'
+    command:
+      [
+        "postgres",
+        "-cshared_preload_libraries=pg_stat_statements"
+      ]
+    environment:
+      POSTGRES_USER: editor
+      POSTGRES_PASSWORD: '123456'
+      POSTGRES_DB: postgres
+      PGDATA: "/data/postgres"
+    volumes:
+      - ./data:/var/lib/postgresql/data
